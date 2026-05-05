@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P1 Vibes | Excellence pour la P1 - Université de Lomé</title>
+    <meta name="description" content="Réussis ta première année 🎯 avec P1 Vibes. 14 Matières, 2 Semestres et Battle Quiz.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0B162C',    // Deep Blue
+                        secondary: '#1A2F4C',
+                        accent: '#FF6B35',     // Vibrant Orange
+                        success: '#00E676',    // Vibrant Green
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans antialiased bg-gray-50 text-gray-800 selection:bg-accent selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <div class="w-10 h-10 bg-accent rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-accent/30">
+                        P1
+                    </div>
+                    <span class="font-black text-2xl tracking-tight text-white" id="logo-text">P1 Vibes</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#accueil" class="text-gray-300 hover:text-white font-medium transition">Accueil</a>
+                    <a href="#matieres" class="text-gray-300 hover:text-white font-medium transition">Matières</a>
+                    <a href="#quiz" class="text-gray-300 hover:text-white font-medium transition">Quiz</a>
+                    <a href="#tarifs" class="text-gray-300 hover:text-white font-medium transition">Tarifs</a>
+                </div>
+
+                <!-- Auth Buttons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="toggleModal('login-modal')" class="text-gray-300 hover:text-white font-medium transition">
+                        Se connecter
+                    </button>
+                    <button onclick="toggleModal('register-modal')" class="bg-accent hover:bg-[#E55A2B] text-white px-6 py-2.5 rounded-full font-semibold transition shadow-lg shadow-accent/30 transform hover:-translate-y-0.5">
+                        Créer un compte
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-white hover:text-accent focus:outline-none">
+                        <i class="ri-menu-4-line text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-primary border-t border-gray-800">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#accueil" class="block px-3 py-3 text-base font-medium text-white hover:bg-secondary rounded-lg">Accueil</a>
+                <a href="#matieres" class="block px-3 py-3 text-base font-medium text-white hover:bg-secondary rounded-lg">Matières</a>
+                <a href="#quiz" class="block px-3 py-3 text-base font-medium text-white hover:bg-secondary rounded-lg">Quiz</a>
+                <a href="#tarifs" class="block px-3 py-3 text-base font-medium text-white hover:bg-secondary rounded-lg">Tarifs</a>
+                <div class="h-px bg-gray-800 my-4"></div>
+                <button onclick="toggleModal('login-modal')" class="w-full text-left px-3 py-3 text-base font-medium text-white hover:bg-secondary rounded-lg">Se connecter</button>
+                <button onclick="toggleModal('register-modal')" class="w-full mt-2 bg-accent text-white px-3 py-3 text-base font-medium rounded-lg text-center shadow-lg">Créer un compte</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-primary min-h-screen flex items-center">
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+            <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+            <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-success/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000"></div>
+            <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000"></div>
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-gray-700/50 mb-6">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
+                        </span>
+                        <span class="text-sm font-medium text-gray-300">Inscriptions ouvertes 2024-2025</span>
+                    </div>
+                    
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight mb-6">
+                        Plateforme d'excellence pour les étudiants de P1 – <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-orange-400">Université de Lomé</span>
+                    </h1>
+                    
+                    <p class="text-xl md:text-2xl text-gray-300 mb-8 font-light">
+                        Réussis ta première année 🎯
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="toggleModal('register-modal')" class="bg-accent hover:bg-[#E55A2B] text-white px-8 py-4 rounded-full font-bold text-lg transition shadow-[0_0_20px_rgba(255,107,53,0.4)] transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                            Commencer maintenant <i class="ri-arrow-right-line"></i>
+                        </button>
+                        <a href="#matieres" class="bg-secondary hover:bg-gray-800 text-white border border-gray-700 px-8 py-4 rounded-full font-bold text-lg transition flex items-center justify-center gap-2">
+                            Découvrir le programme
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Content -->
+                <div class="relative hidden md:block">
+                    <div class="relative w-full aspect-square max-w-lg mx-auto">
+                        <!-- Abstract Dashboard UI Mockup -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-secondary to-primary rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden transform -rotate-2 hover:rotate-0 transition duration-500 z-20">
+                            <!-- Header -->
+                            <div class="h-12 border-b border-gray-700/50 flex items-center px-4 gap-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-success"></div>
+                            </div>
+                            <!-- Content -->
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-6">
+                                    <div class="w-32 h-6 bg-gray-700 rounded-md"></div>
+                                    <div class="w-10 h-10 bg-accent/20 text-accent rounded-full flex items-center justify-center"><i class="ri-user-line"></i></div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700/30">
+                                        <div class="w-8 h-8 text-success mb-2"><i class="ri-bar-chart-box-line text-2xl"></i></div>
+                                        <div class="w-16 h-4 bg-gray-600 rounded mb-2"></div>
+                                        <div class="w-24 h-6 bg-gray-500 rounded"></div>
+                                    </div>
+                                    <div class="bg-gray-800/50 p-4 rounded-xl border border-gray-700/30">
+                                        <div class="w-8 h-8 text-accent mb-2"><i class="ri-medal-line text-2xl"></i></div>
+                                        <div class="w-16 h-4 bg-gray-600 rounded mb-2"></div>
+                                        <div class="w-24 h-6 bg-gray-500 rounded"></div>
+                                    </div>
+                                </div>
+                                <div class="w-full h-32 bg-gray-800/50 rounded-xl border border-gray-700/30 flex items-end p-4 gap-2">
+                                    <div class="w-full bg-accent/80 h-[40%] rounded-t-sm"></div>
+                                    <div class="w-full bg-accent/60 h-[60%] rounded-t-sm"></div>
+                                    <div class="w-full bg-accent h-[80%] rounded-t-sm"></div>
+                                    <div class="w-full bg-accent/40 h-[50%] rounded-t-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Elements -->
+                        <div class="absolute -top-6 -right-6 bg-white p-4 rounded-2xl shadow-xl z-30 animate-float flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 text-success rounded-full flex items-center justify-center text-xl">
+                                <i class="ri-check-double-line"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-bold uppercase">Anatomie</p>
+                                <p class="text-sm font-bold text-gray-900">Validée ! 🎉</p>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute -bottom-10 -left-10 bg-white p-4 rounded-2xl shadow-xl z-30 animate-float animation-delay-2000 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-orange-100 text-accent rounded-full flex items-center justify-center text-xl">
+                                <i class="ri-sword-line"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-bold uppercase">Battle Quiz</p>
+                                <p class="text-sm font-bold text-gray-900">Victoire +50pts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Shape Divider -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+            <svg class="relative block w-full h-[50px] md:h-[100px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-gray-50"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Cible Section -->
+    <section class="py-12 bg-gray-50 -mt-8 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm font-bold text-gray-400 tracking-widest uppercase mb-4">Pour les filières</p>
+            <h2 class="text-2xl md:text-3xl font-bold text-primary">
+                Médecine <span class="text-accent mx-2">•</span> Pharmacie <span class="text-accent mx-2">•</span> Odontologie
+            </h2>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section id="matieres" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-primary mb-4">Tout ce qu'il te faut pour réussir</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Une plateforme complète conçue spécifiquement pour le programme de l'Université de Lomé.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Stat 1 -->
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="ri-book-read-line"></i>
+                    </div>
+                    <h3 class="text-4xl font-black text-primary mb-2">14</h3>
+                    <p class="text-xl font-bold text-gray-800 mb-2">Matières disponibles</p>
+                    <p class="text-gray-600">Des fiches de cours, QCM et résumés pour couvrir l'intégralité du programme officiel.</p>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
+                    <div class="w-16 h-16 bg-green-100 text-success rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-success group-hover:text-white transition-colors">
+                        <i class="ri-calendar-event-line"></i>
+                    </div>
+                    <h3 class="text-4xl font-black text-primary mb-2">2</h3>
+                    <p class="text-xl font-bold text-gray-800 mb-2">Semestres couverts</p>
+                    <p class="text-gray-600">Un accompagnement continu du premier jour jusqu'aux examens finaux.</p>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="bg-gray-50 rounded-3xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>
+                    <div class="w-16 h-16 bg-orange-100 text-accent rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
+                        <i class="ri-sword-line"></i>
+                    </div>
+                    <h3 class="text-3xl font-black text-primary mb-2 mt-2">⚔️ Battle Quiz en direct</h3>
+                    <p class="text-gray-600 mt-4">Défie tes camarades en temps réel, gagne des points et grimpe dans le classement général (Leaderboard).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview/Features -->
+    <section id="quiz" class="py-20 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <div class="relative">
+                        <!-- Mockup Smartphone -->
+                        <div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl">
+                            <div class="w-[148px] h-[18px] bg-gray-800 top-0 rounded-b-[1rem] left-1/2 -translate-x-1/2 absolute"></div>
+                            <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[124px] rounded-s-lg"></div>
+                            <div class="h-[46px] w-[3px] bg-gray-800 absolute -start-[17px] top-[178px] rounded-s-lg"></div>
+                            <div class="h-[64px] w-[3px] bg-gray-800 absolute -end-[17px] top-[142px] rounded-e-lg"></div>
+                            <div class="rounded-[2rem] overflow-hidden w-[272px] h-[572px] bg-white">
+                                <!-- App Interface -->
+                                <div class="bg-primary h-full w-full flex flex-col text-white">
+                                    <div class="p-6 pb-2 pt-10">
+                                        <div class="flex justify-between items-center mb-6">
+                                            <div>
+                                                <p class="text-xs text-gray-400">Salut,</p>
+                                                <p class="font-bold">Futur Médecin 👋</p>
+                                            </div>
+                                            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
+                                                FM
+                                            </div>
+                                        </div>
+                                        <div class="bg-gradient-to-r from-accent to-orange-400 p-4 rounded-2xl shadow-lg mb-6">
+                                            <p class="text-white/80 text-sm">Classement général</p>
+                                            <p class="text-2xl font-bold flex justify-between items-end">
+                                                Top 15% <i class="ri-trophy-line text-4xl opacity-50"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 bg-gray-50 rounded-t-3xl p-6 text-gray-800">
+                                        <p class="font-bold text-lg mb-4">Quiz du jour ⚔️</p>
+                                        <div class="space-y-3">
+                                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center"><i class="ri-microscope-line"></i></div>
+                                                    <div>
+                                                        <p class="font-bold text-sm">Biologie Cellulaire</p>
+                                                        <p class="text-xs text-gray-500">20 questions</p>
+                                                    </div>
+                                                </div>
+                                                <i class="ri-play-circle-fill text-accent text-2xl"></i>
+                                            </div>
+                                            <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex items-center justify-between">
+                                                <div class="flex items-center gap-3">
+                                                    <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center"><i class="ri-flask-line"></i></div>
+                                                    <div>
+                                                        <p class="font-bold text-sm">Biochimie</p>
+                                                        <p class="text-xs text-gray-500">15 questions</p>
+                                                    </div>
+                                                </div>
+                                                <i class="ri-play-circle-fill text-accent text-2xl"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating badge -->
+                        <div class="absolute top-1/4 -left-8 md:-left-12 bg-white p-3 rounded-xl shadow-xl flex items-center gap-3 z-10">
+                            <div class="w-10 h-10 bg-accent rounded-full flex items-center justify-center text-white"><i class="ri-smartphone-line text-xl"></i></div>
+                            <div>
+                                <p class="text-sm font-bold text-gray-900">100% Mobile</p>
+                                <p class="text-xs text-gray-500">Révise n'importe où</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-black text-primary mb-6">Conçu pour le smartphone, pensé pour la réussite.</h2>
+                    <p class="text-lg text-gray-600 mb-8">P1 Vibes offre une expérience utilisateur fluide et intuitive, te permettant de réviser tes cours et de t'entraîner aux QCM où que tu sois.</p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-green-100 text-success rounded-xl flex items-center justify-center text-2xl">
+                                <i class="ri-folder-open-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-1">Espace Membre Personnalisé</h4>
+                                <p class="text-gray-600">Tableau de bord intelligent pour suivre ta progression matière par matière.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-orange-100 text-accent rounded-xl flex items-center justify-center text-2xl">
+                                <i class="ri-fire-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-primary mb-1">Entraînement Intensif</h4>
+                                <p class="text-gray-600">Des milliers de QCM types concours pour t'évaluer avant le jour J.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="tarifs" class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black text-white mb-4">Un investissement pour ton avenir</h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto">Accède à toutes les ressources de la plateforme avec une offre unique et transparente.</p>
+            </div>
+            
+            <div class="max-w-lg mx-auto">
+                <div class="bg-white rounded-3xl p-8 relative shadow-2xl transform transition hover:-translate-y-2">
+                    <div class="absolute top-0 right-8 transform -translate-y-1/2">
+                        <span class="bg-success text-white text-sm font-bold uppercase tracking-wider py-1 px-4 rounded-full shadow-lg">Meilleure offre</span>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold text-primary mb-2">Pass Réussite</h3>
+                    <p class="text-gray-500 mb-6">L'accès complet pour toute l'année universitaire.</p>
+                    
+                    <div class="flex items-baseline mb-8">
+                        <span class="text-5xl font-black text-primary">5000F</span>
+                        <span class="text-xl text-gray-500 ml-2 font-medium">/ an</span>
+                    </div>
+                    <p class="text-sm font-bold text-accent mb-6">5000F Abonnement annuel</p>
+                    
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-700">
+                            <i class="ri-checkbox-circle-fill text-success text-xl mr-3"></i> Accès aux 14 matières
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="ri-checkbox-circle-fill text-success text-xl mr-3"></i> QCM illimités & Corrections détaillées
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="ri-checkbox-circle-fill text-success text-xl mr-3"></i> Accès au Battle Quiz
+                        </li>
+                        <li class="flex items-center text-gray-700">
+                            <i class="ri-checkbox-circle-fill text-success text-xl mr-3"></i> Suivi de progression (Tableau de bord)
+                        </li>
+                    </ul>
+                    
+                    <button onclick="toggleModal('register-modal')" class="w-full bg-primary hover:bg-secondary text-white py-4 rounded-xl font-bold text-lg transition flex items-center justify-center gap-2 group">
+                        S'abonner <i class="ri-arrow-right-line group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                    
+                    <div class="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
+                        <i class="ri-secure-payment-line text-lg"></i> Paiement sécurisé via Mobile Money (T-Money, Flooz)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#071120] text-gray-400 py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-accent rounded-lg flex items-center justify-center text-white font-bold">P1</div>
+                        <span class="font-black text-xl text-white">P1 Vibes</span>
+                    </div>
+                    <p class="mb-4 max-w-sm">La plateforme d'excellence pour les étudiants de P1 – Université de Lomé. Médecine, Pharmacie, Odontologie.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition"><i class="ri-facebook-fill"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition"><i class="ri-twitter-x-line"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-accent hover:text-white transition"><i class="ri-instagram-line"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Liens Rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#accueil" class="hover:text-accent transition">Accueil</a></li>
+                        <li><a href="#matieres" class="hover:text-accent transition">Les Matières</a></li>
+                        <li><a href="#quiz" class="hover:text-accent transition">Battle Quiz</a></li>
+                        <li><a href="#tarifs" class="hover:text-accent transition">Tarifs</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Légal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent transition">Mentions légales</a></li>
+                        <li><a href="#" class="hover:text-accent transition">Politique de confidentialité</a></li>
+                        <li><a href="#" class="hover:text-accent transition">CGV</a></li>
+                        <li><a href="#" class="hover:text-accent transition">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm">
+                <p>&copy; 2024 P1 Vibes. Tous droits réservés.</p>
+                <p class="mt-2 md:mt-0 flex items-center gap-1">Fait avec <i class="ri-heart-fill text-accent"></i> pour la réussite à l'UL</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-primary/80 backdrop-blur-sm transition-opacity" onclick="toggleModal('login-modal')"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div class="relative bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-md w-full border border-gray-100">
+                <div class="absolute top-4 right-4">
+                    <button onclick="toggleModal('login-modal')" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="text-center mb-8">
+                        <div class="w-12 h-12 bg-accent rounded-xl mx-auto flex items-center justify-center text-white font-bold text-xl mb-4">P1</div>
+                        <h3 class="text-2xl font-black text-primary">Bon retour !</h3>
+                        <p class="text-gray-500 mt-2">Connecte-toi pour reprendre tes révisions.</p>
+                    </div>
+                    
+                    <form class="space-y-5" onsubmit="event.preventDefault(); alert('Connexion réussie ! Redirection vers le tableau de bord...'); toggleModal('login-modal');">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Email universitaire ou personnel</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="etudiant@univ-lome.tg">
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <label class="block text-sm font-bold text-gray-700">Mot de passe</label>
+                                <a href="#" class="text-sm text-accent hover:underline">Oublié ?</a>
+                            </div>
+                            <input type="password" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="••••••••">
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white py-3.5 rounded-xl font-bold text-lg transition shadow-lg mt-2">
+                            Se connecter
+                        </button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600 text-sm">
+                            Pas encore de compte ? 
+                            <button onclick="toggleModal('login-modal'); setTimeout(() => toggleModal('register-modal'), 300)" class="text-accent font-bold hover:underline">S'inscrire gratuitement</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="register-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-primary/80 backdrop-blur-sm transition-opacity" onclick="toggleModal('register-modal')"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
+            <div class="relative bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:max-w-md w-full border border-gray-100">
+                <div class="absolute top-4 right-4">
+                    <button onclick="toggleModal('register-modal')" class="text-gray-400 hover:text-gray-600 focus:outline-none">
+                        <i class="ri-close-line text-2xl"></i>
+                    </button>
+                </div>
+                <div class="p-8">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-black text-primary">Créer un compte</h3>
+                        <p class="text-gray-500 mt-2">Rejoins l'élite de la P1 à l'Université de Lomé.</p>
+                    </div>
+                    
+                    <form class="space-y-4" onsubmit="event.preventDefault(); alert('Inscription réussie ! Veuillez procéder au paiement (Simulé)'); toggleModal('register-modal');">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Nom</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="Nom">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Prénom</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="Prénom">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Filière visée</label>
+                            <select required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none bg-white">
+                                <option value="" disabled selected>Choisis ta filière</option>
+                                <option value="medecine">Médecine</option>
+                                <option value="pharmacie">Pharmacie</option>
+                                <option value="odontologie">Odontologie</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
+                            <input type="email" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="etudiant@univ-lome.tg">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Mot de passe</label>
+                            <input type="password" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-accent focus:ring-2 focus:ring-accent/20 transition outline-none" placeholder="••••••••">
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-accent hover:bg-[#E55A2B] text-white py-3.5 rounded-xl font-bold text-lg transition shadow-[0_0_15px_rgba(255,107,53,0.3)] mt-4">
+                            S'inscrire (5000F / an)
+                        </button>
+                    </form>
+                    
+                    <div class="mt-6 text-center">
+                        <p class="text-gray-600 text-sm">
+                            Déjà un compte ? 
+                            <button onclick="toggleModal('register-modal'); setTimeout(() => toggleModal('login-modal'), 300)" class="text-primary font-bold hover:underline">Se connecter</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
